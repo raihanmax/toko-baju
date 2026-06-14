@@ -1,0 +1,14 @@
+# Disable directory listing
+Options -Indexes
+
+# Protect config files
+<FilesMatch "^config\.php$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Blokir akses file PHP di folder uploads
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^uploads/.*\.(php|php3|php4|php5|phtml|pl|py|sh|cgi)$ - [F,NC]
+</IfModule>
